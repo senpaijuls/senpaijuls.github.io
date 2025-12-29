@@ -84,6 +84,117 @@
             margin-bottom: 30px;
         }
 
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            button {
+                padding: 15px 35px;
+                font-size: 1em;
+            }
+
+            .gif-container img {
+                max-width: 150px;
+            }
+
+            .photo-container img {
+                max-width: 250px;
+            }
+
+            .emoji {
+                font-size: 2em;
+            }
+
+            .sun {
+                width: 60px;
+                height: 60px;
+                top: 30px;
+                right: 30px;
+            }
+
+            .cloud {
+                transform: scale(0.7);
+            }
+
+            .flower-decoration {
+                transform: scale(0.7);
+            }
+
+            .grass {
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.9em;
+                margin-bottom: 20px;
+            }
+
+            .container {
+                padding: 20px 15px;
+            }
+
+            button {
+                padding: 12px 25px;
+                font-size: 0.9em;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .gif-container img {
+                max-width: 120px;
+            }
+
+            .photo-container img {
+                max-width: 200px;
+            }
+
+            .emoji {
+                font-size: 1.5em;
+            }
+
+            .sun {
+                width: 50px;
+                height: 50px;
+                top: 20px;
+                right: 20px;
+            }
+
+            .flower-decoration {
+                transform: scale(0.5);
+            }
+
+            .grass {
+                height: 60px;
+            }
+        }
+
         .gif-container {
             margin: 30px 0;
         }
@@ -584,13 +695,13 @@
                 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXcybXp0dHJ6NmRhY2RzOWlucGg4ZHFmaGRzeDFpOG02bXM0NzRpdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ed1FaePDtIjlz2tunv/giphy.gif" alt="Waving Hello">
             </div>
             <p>I have something really special to tell you...</p>
-            <p>Are you ready? 🌸</p>
+            <p>Are you ready?</p>
             <button onclick="nextPage(2)">Continue →</button>
         </div>
 
         <!-- Page 2: Build Up -->
         <div class="page" id="page2">
-            <h2>I wanted to tell you something... ✨</h2>
+            <h2>I wanted to tell you something</h2>
             <div class="gif-container">
                 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnpxYnNzMnZ4ODk3MTBvbnBnZ3B5Zmp4Nno5NmU3MTYwbzV6Nnl2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XYEEvoX0Ub69ZgN9ai/giphy.gif" alt="Hearts">
             </div>
@@ -601,7 +712,7 @@
 
         <!-- Page 3: More Feelings -->
         <div class="page" id="page3">
-            <h2>You're literally the most amazing person... 🌹</h2>
+            <h2>You're literally the most amazing person</h2>
             <div class="gif-container">
                 <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjNqNWxmb2drMDF4dDBlaGcyM3A1c2wxdjE5MW15a3MxYml4djdobiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4asRlBKdJaPeBahjcL/giphy.gif" alt="Blushing">
             </div>
@@ -612,7 +723,7 @@
 
         <!-- Page 3.5: Even More Feelings -->
         <div class="page" id="page35">
-            <h2>And honestly... 💭</h2>
+            <h2>And honestly</h2>
             <div class="gif-container">
                 <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGdwNjl6ZjhucXE4aGdicjR3MzdheTVqZnZhZ3J6aW95YWlwNHFoNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kwKjfaEpJbcQtzaFan/giphy.gif" alt="Thinking">
             </div>
@@ -623,7 +734,7 @@
 
         <!-- Page 4: The Question -->
         <div class="page" id="page4">
-            <h2>So, yun lang... 💖</h2>
+            <h2>So, yun lang.</h2>
             <div class="emoji">🥺👉👈</div>
             
             <!-- Photo Section - Replace the src with your image URL -->
@@ -652,10 +763,10 @@
                 <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHQ5dGRodGwzNW8ybmU5dHk0YzZna3BqdXVieXh4aWpwd3JpMnhzeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vqvmGLZdqxNzCtVlR3/giphy.gif" alt="Celebration">
             </div>
             <div class="final-message">
-                <p style="font-size: 1.3em; color: #FF1493;">You just made me the happiest person ever! 💖</p>
-                <p>I can't wait to spend time with you! This is going to be amazing! 🌟</p>
+                <p style="font-size: 1.3em; color: #FF1493;">You just made me the happiest person ever! </p>
+                <p>I can't wait to spend time with you! This is going to be amazing!</p>
             </div>
-            <div class="emoji">🥰💕✨🎊💝</div>
+            <div class="emoji">💕💝</div>
         </div>
 
         <!-- Page 6: No Response -->
