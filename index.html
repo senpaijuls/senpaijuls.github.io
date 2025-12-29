@@ -3,66 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>Something Special 💕</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBjt6x4H72qcw2-5JdIz5P4uxosDvJ9-gTPrT3j5bmpMs-j5AL4mPEEyrt&s=10');
-            background-size: cover;
-            background-position: center;
-            color: white;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFB6C1 0%, #FFE4E1 50%, #FFC0CB 100%);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            text-align: center;
+            overflow-x: hidden;
         }
 
         .container {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 90%;
+            background: white;
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: slideIn 0.6s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 50px;
-            margin: 0;
+            color: #FF1493;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+        }
+
+        h2 {
+            color: #FF69B4;
+            font-size: 2em;
+            margin-bottom: 20px;
         }
 
         p {
-            font-size: 20px;
-            margin: 15px 0;
+            color: #666;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
 
-        .button {
-            background-color: #ff4081;
+        .gif-container {
+            margin: 30px 0;
+        }
+
+        .gif-container img {
+            max-width: 200px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
             color: white;
-            padding: 10px 20px;
             border: none;
-            border-radius: 5px;
+            padding: 18px 50px;
+            font-size: 1.2em;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.3);
+            font-weight: bold;
         }
 
-        .button:hover {
-            background-color: #ff1f5b;
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.4);
+        }
+
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: #FF69B4;
+            font-size: 30px;
+            animation: float 4s ease-in infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #FF1493, #FF69B4);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #DC143C, #FF6347);
+            font-size: 1em;
+            padding: 12px 30px;
+            position: relative;
+        }
+
+        .final-message {
+            background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin: 20px 0;
         }
     </style>
 </head>
 <body>
+    <div class="hearts" id="hearts"></div>
+    
     <div class="container">
-        <h1>For You ❤️</h1>
-        <p>Hi, Ms. Angel!</p>
-        <p>i just want you to know nga crush taka hehe</p>
-        <p>i don't know why but since sang nakita taka sa plantanan, i can't stop thinking of you.</p>
-        <p>is this what they called love at first sight?</p>
-        <button class="button" onclick="alert('para sakon, you are special!')">Click Me!</button>
+        <!-- Page 1: Introduction -->
+        <div class="page active" id="page1">
+            <h1>Hello, Shane! 💕</h1>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/l0HlSQg7NtTt3ZCSQ/giphy.gif" alt="Waving Hello">
+            </div>
+            <p>I have something really special to tell you...</p>
+            <p>Are you ready? 🌸</p>
+            <button onclick="nextPage(2)">Continue →</button>
+        </div>
+
+        <!-- Page 2: Build Up -->
+        <div class="page" id="page2">
+            <h2>I wanted to tell you something... ✨</h2>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/3o7qDSOvfaCO9b3MlO/giphy.gif" alt="Hearts">
+            </div>
+            <p>I hope you don't laugh or get annoyed. I've been thinking about this a lot, and I just have to get it out.</p>
+            <p>I like you. 💓</p>
+            <button onclick="nextPage(3)">Continue... →</button>
+        </div>
+
+        <!-- Page 3: More Feelings -->
+        <div class="page" id="page3">
+            <h2>You're literally the most amazing person... 🌹</h2>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/3oEduQAsYcJKQH2XsI/giphy.gif" alt="Blushing">
+            </div>
+            <p>You're stunning, not just because of how you look, but because of how you carry yourself - confident, smart, and unapologetic.</p>
+            <p>Your humor is everything. I love how you can be super funny one minute and then dark af the next. It's like, I never know what's gonna come out of your mouth, and I love that about you.</p>
+            <button onclick="nextPage(35)">Keep reading →</button>
+        </div>
+
+        <!-- Page 3.5: Even More Feelings -->
+        <div class="page" id="page35">
+            <h2>And honestly... 💭</h2>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/l0HlRnAWXxn0MhKLK/giphy.gif" alt="Thinking">
+            </div>
+            <p>The way you get mad at me when I annoy you? Kinda makes me wanna annoy you more. But it's also kinda scary because I don't want to lose you as a friend. You've become way too important to me.</p>
+            <p>I think what draws me to you is how real you are. You're not fake, you're not trying to be anyone else, and that's so attractive. You're just you. And I love that about you.</p>
+            <button onclick="nextPage(4)">Continue... →</button>
+        </div>
+
+        <!-- Page 4: The Question -->
+        <div class="page" id="page4">
+            <h2>So, yun lang... 💖</h2>
+            <div class="emoji">🥺👉👈</div>
+            <p style="font-size: 1.3em; color: #666; margin-bottom: 20px;">Gusto ko lang na malaman mo. No pressure, no expectations.</p>
+            <p style="font-size: 1.5em; color: #FF1493; font-weight: bold;">Do you like me too?</p>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/3oEjI1erPMTMBFmNHi/giphy.gif" alt="Nervous">
+            </div>
+            <p style="font-size: 0.9em; color: #999; font-style: italic;">And after you answer, hindi na ako makakapagreply kasi inoff ko na cp ko dahil sa kahihiyan 😅</p>
+            <p style="font-size: 1.1em; color: #FF69B4; margin-top: 20px;">Happy New Year, Shanee! 🎆</p>
+            <div class="button-group">
+                <button class="yes-btn" onclick="yesClicked()">Yes! 💕</button>
+                <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="noClicked()">No</button>
+            </div>
+        </div>
+
+        <!-- Page 5: Yes Response -->
+        <div class="page" id="page5">
+            <h1>YAAAY! 🎉</h1>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/artj92V8o75VPL7AeQ/giphy.gif" alt="Celebration">
+            </div>
+            <div class="final-message">
+                <p style="font-size: 1.3em; color: #FF1493;">You just made me the happiest person ever! 💖</p>
+                <p>I can't wait to spend time with you! This is going to be amazing! 🌟</p>
+            </div>
+            <div class="emoji">🥰💕✨🎊💝</div>
+        </div>
+
+        <!-- Page 6: No Response -->
+        <div class="page" id="page6">
+            <h2>Wait... really? 🥺</h2>
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/d2lcHJTG5Tscg/giphy.gif" alt="Sad">
+            </div>
+            <p>Are you absolutely sure? Maybe you clicked the wrong button?</p>
+            <button onclick="nextPage(4)">← Let me reconsider</button>
+        </div>
     </div>
+
+    <script>
+        let currentPage = 1;
+
+        function nextPage(pageNum) {
+            document.getElementById('page' + currentPage).classList.remove('active');
+            currentPage = pageNum;
+            document.getElementById('page' + pageNum).classList.add('active');
+            createHearts();
+        }
+
+        function yesClicked() {
+            nextPage(5);
+            createManyHearts();
+        }
+
+        function noClicked() {
+            nextPage(6);
+        }
+
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = btn.parentElement;
+            const containerRect = container.getBoundingClientRect();
+            
+            const maxX = 100;
+            const maxY = 50;
+            
+            const randomX = Math.random() * maxX - maxX/2;
+            const randomY = Math.random() * maxY - maxY/2;
+            
+            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+            btn.style.transition = 'transform 0.3s ease';
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '💖';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 200);
+            }
+        }
+
+        function createManyHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = ['💖', '💕', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = '0s';
+                    heartsContainer.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 4000);
+                }, i * 100);
+            }
+        }
+
+        // Initial hearts animation
+        setInterval(createHearts, 3000);
+    </script>
 </body>
 </html>
