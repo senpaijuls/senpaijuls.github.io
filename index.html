@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Yen</title>
+    <title>Love Letters for You</title>
     <style>
         * {
             margin: 0;
@@ -12,31 +12,55 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #FFB6C1 0%, #FFE4E1 50%, #FFC0CB 100%);
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffc3d5 0%, #ffe5ec 50%, #fff 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        .tulip {
+            position: fixed;
+            font-size: 60px;
+            opacity: 0.4;
+            animation: float 15s infinite ease-in-out;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-60px) rotate(-5deg);
+            }
+            75% {
+                transform: translateY(-30px) rotate(3deg);
+            }
         }
 
         .container {
-            max-width: 600px;
-            width: 90%;
-            background: white;
-            border-radius: 30px;
-            padding: 50px 40px;
-            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.3);
-            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
             position: relative;
-            animation: fadeIn 1s ease;
+            z-index: 2;
         }
 
-        @keyframes fadeIn {
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease;
+        }
+
+        @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-30px);
             }
             to {
                 opacity: 1;
@@ -44,872 +68,310 @@
             }
         }
 
-        .page {
-            display: none;
+        .header h1 {
+            color: #d63384;
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.2);
         }
 
-        .page.active {
-            display: block;
-            animation: slideIn 0.6s ease;
+        .header p {
+            color: #c2185b;
+            font-size: 1.3em;
+            font-style: italic;
         }
 
-        @keyframes slideIn {
+        .letter-container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(214, 51, 132, 0.15);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateX(50px);
+                transform: scale(0.95);
             }
             to {
                 opacity: 1;
-                transform: translateX(0);
+                transform: scale(1);
             }
         }
 
-        h1 {
-            color: #FF1493;
-            font-size: 3em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(255, 105, 180, 0.2);
+        .letter-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #ff69b4, #d63384, #c2185b);
         }
 
-        h2 {
-            color: #FF69B4;
-            font-size: 2em;
+        .letter-date {
+            color: #d63384;
+            font-size: 0.9em;
             margin-bottom: 20px;
+            font-style: italic;
         }
 
-        p {
-            color: #666;
-            font-size: 1.2em;
+        .letter-content {
+            color: #333;
             line-height: 1.8;
-            margin-bottom: 30px;
+            font-size: 1.1em;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            h2 {
-                font-size: 1.5em;
-            }
-
-            p {
-                font-size: 1em;
-                line-height: 1.6;
-            }
-
-            .container {
-                padding: 30px 20px;
-            }
-
-            button {
-                padding: 15px 35px;
-                font-size: 1em;
-            }
-
-            .gif-container img {
-                max-width: 150px;
-            }
-
-            .photo-container img {
-                max-width: 250px;
-            }
-
-            .emoji {
-                font-size: 2em;
-            }
-
-            .sun {
-                width: 60px;
-                height: 60px;
-                top: 30px;
-                right: 30px;
-            }
-
-            .cloud {
-                transform: scale(0.7);
-            }
-
-            .flower-decoration {
-                transform: scale(0.7);
-            }
-
-            .grass {
-                height: 80px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-
-            h2 {
-                font-size: 1.2em;
-            }
-
-            p {
-                font-size: 0.9em;
-                margin-bottom: 20px;
-            }
-
-            .container {
-                padding: 20px 15px;
-            }
-
-            button {
-                padding: 12px 25px;
-                font-size: 0.9em;
-            }
-
-            .button-group {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .gif-container img {
-                max-width: 120px;
-            }
-
-            .photo-container img {
-                max-width: 200px;
-            }
-
-            .emoji {
-                font-size: 1.5em;
-            }
-
-            .sun {
-                width: 50px;
-                height: 50px;
-                top: 20px;
-                right: 20px;
-            }
-
-            .flower-decoration {
-                transform: scale(0.5);
-            }
-
-            .grass {
-                height: 60px;
-            }
-        }
-
-        .gif-container {
+        .heart-divider {
+            text-align: center;
             margin: 30px 0;
+            color: #ff69b4;
+            font-size: 2em;
         }
 
-        .gif-container img {
-            max-width: 200px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        button {
-            background: linear-gradient(135deg, #FF1493, #FF69B4);
+        .add-letter-btn {
+            background: linear-gradient(135deg, #ff69b4, #d63384);
             color: white;
             border: none;
-            padding: 18px 50px;
-            font-size: 1.2em;
+            padding: 15px 40px;
+            font-size: 1.1em;
             border-radius: 50px;
             cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            box-shadow: 0 5px 20px rgba(214, 51, 132, 0.3);
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(255, 20, 147, 0.3);
+        }
+
+        .add-letter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(214, 51, 132, 0.4);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            color: #d63384;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #d63384;
+            margin-bottom: 8px;
             font-weight: bold;
         }
 
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.4);
-        }
-
-        .hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .heart {
-            position: absolute;
-            color: #FF69B4;
-            font-size: 30px;
-            animation: float 4s ease-in infinite;
-            opacity: 0;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        .flowers {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .flower {
-            position: absolute;
-            font-size: 35px;
-            animation: floatFlower 5s ease-in-out infinite;
-            opacity: 0;
-        }
-
-        .flower-left {
-            left: 5%;
-        }
-
-        .flower-right {
-            right: 5%;
-        }
-
-        @keyframes floatFlower {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(-100px) rotate(180deg);
-                opacity: 0;
-            }
-        }
-
-        .flower-decoration {
-            position: fixed;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.6;
-            animation: sway 3s ease-in-out infinite;
-            transform-origin: bottom center;
-        }
-
-        @keyframes sway {
-            0%, 100% {
-                transform: rotate(0deg);
-            }
-            25% {
-                transform: rotate(3deg);
-            }
-            75% {
-                transform: rotate(-3deg);
-            }
-        }
-
-        .flower-left-bottom {
-            bottom: 0;
-            left: 0;
-            width: 250px;
-            height: 350px;
-            animation-delay: 0s;
-        }
-
-        .flower-right-bottom {
-            bottom: 0;
-            right: 0;
-            width: 250px;
-            height: 350px;
-            animation-delay: 0.5s;
-        }
-
-        .flower-left-top {
-            top: 0;
-            left: 0;
-            width: 150px;
-            height: 200px;
-            animation-delay: 0.3s;
-        }
-
-        .flower-right-top {
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 200px;
-            animation-delay: 0.8s;
-        }
-
-        .grass {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 120px;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .grass-blade {
-            position: absolute;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(to top, #2d5016, #4a7c2c, #6b9d3a);
-            border-radius: 50% 50% 0 0;
-            animation: grassSway 2.5s ease-in-out infinite;
-            transform-origin: bottom center;
-        }
-
-        @keyframes grassSway {
-            0%, 100% {
-                transform: rotate(0deg);
-            }
-            50% {
-                transform: rotate(var(--sway-angle));
-            }
-        }
-
-        .sky {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .sun {
-            position: absolute;
-            top: 50px;
-            right: 80px;
-            width: 80px;
-            height: 80px;
-            background: radial-gradient(circle, #FFD700 0%, #FFA500 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 40px #FFD700, 0 0 80px #FFA500;
-            animation: sunPulse 4s ease-in-out infinite;
-        }
-
-        @keyframes sunPulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 0 40px #FFD700, 0 0 80px #FFA500;
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 0 50px #FFD700, 0 0 100px #FFA500;
-            }
-        }
-
-        .cloud {
-            position: absolute;
-            background: white;
-            opacity: 0.7;
-            border-radius: 100px;
-            animation: cloudFloat linear infinite;
-        }
-
-        .cloud::before,
-        .cloud::after {
-            content: '';
-            position: absolute;
-            background: white;
-            border-radius: 100px;
-        }
-
-        .cloud1 {
-            width: 100px;
-            height: 40px;
-            top: 80px;
-            animation-duration: 40s;
-            animation-delay: 0s;
-        }
-
-        .cloud1::before {
-            width: 50px;
-            height: 50px;
-            top: -25px;
-            left: 10px;
-        }
-
-        .cloud1::after {
-            width: 60px;
-            height: 40px;
-            top: -15px;
-            right: 10px;
-        }
-
-        .cloud2 {
-            width: 120px;
-            height: 45px;
-            top: 150px;
-            animation-duration: 50s;
-            animation-delay: -10s;
-        }
-
-        .cloud2::before {
-            width: 60px;
-            height: 60px;
-            top: -30px;
-            left: 15px;
-        }
-
-        .cloud2::after {
-            width: 70px;
-            height: 45px;
-            top: -20px;
-            right: 15px;
-        }
-
-        .cloud3 {
-            width: 90px;
-            height: 35px;
-            top: 100px;
-            animation-duration: 45s;
-            animation-delay: -25s;
-        }
-
-        .cloud3::before {
-            width: 45px;
-            height: 45px;
-            top: -20px;
-            left: 10px;
-        }
-
-        .cloud3::after {
-            width: 55px;
-            height: 35px;
-            top: -15px;
-            right: 10px;
-        }
-
-        @keyframes cloudFloat {
-            from {
-                left: -150px;
-            }
-            to {
-                left: 100%;
-            }
-        }
-
-        .button-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .yes-btn {
-            background: linear-gradient(135deg, #FF1493, #FF69B4);
-        }
-
-        .no-btn {
-            background: linear-gradient(135deg, #DC143C, #FF6347);
+            padding: 12px;
+            border: 2px solid #ffc3d5;
+            border-radius: 10px;
+            font-family: 'Georgia', serif;
             font-size: 1em;
+        }
+
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff69b4, #d63384);
+            color: white;
+            border: none;
             padding: 12px 30px;
-            position: relative;
-        }
-
-        .final-message {
-            background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 20px 0;
-        }
-
-        .emoji {
-            font-size: 3em;
-            margin: 20px 0;
-        }
-
-        .photo-container {
-            margin: 30px 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.2);
-        }
-
-        .photo-container img {
-            max-width: 300px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
             width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            border: 5px solid white;
+            margin-top: 10px;
         }
 
-        .photo-caption {
-            color: #FF69B4;
-            font-size: 1em;
-            margin-top: 15px;
-            font-style: italic;
+        .delete-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background: #ee5a6f;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            .letter-container {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Sky with Sun and Clouds -->
-    <div class="sky">
-        <div class="sun"></div>
-        <div class="cloud cloud1"></div>
-        <div class="cloud cloud2"></div>
-        <div class="cloud cloud3"></div>
-    </div>
-    
-    <div class="hearts" id="hearts"></div>
-    <div class="flowers" id="flowers"></div>
-    
-    <!-- Decorative Flowers on Corners -->
-    <svg class="flower-decoration flower-left-bottom" viewBox="0 0 250 350">
-        <g transform="translate(70, 250)">
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFC0CB" opacity="0.8"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFB6C1" opacity="0.8" transform="rotate(45)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFE4E1" opacity="0.8" transform="rotate(90)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFC0CB" opacity="0.8" transform="rotate(135)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFB6C1" opacity="0.8" transform="rotate(180)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFE4E1" opacity="0.8" transform="rotate(225)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFC0CB" opacity="0.8" transform="rotate(270)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFB6C1" opacity="0.8" transform="rotate(315)"/>
-            <circle cx="0" cy="0" r="12" fill="#FFD700"/>
-        </g>
-        <line x1="70" y1="250" x2="70" y2="350" stroke="#90EE90" stroke-width="4"/>
-        <path d="M 45 270 Q 57 265 70 270" fill="#90EE90" opacity="0.7"/>
-        <path d="M 70 290 Q 77 285 85 290" fill="#90EE90" opacity="0.7"/>
-        <path d="M 50 310 Q 60 305 70 310" fill="#90EE90" opacity="0.7"/>
-    </svg>
-    
-    <svg class="flower-decoration flower-right-bottom" viewBox="0 0 250 350">
-        <g transform="translate(180, 250)">
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFB6C1" opacity="0.8"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFC0CB" opacity="0.8" transform="rotate(45)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFE4E1" opacity="0.8" transform="rotate(90)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFB6C1" opacity="0.8" transform="rotate(135)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFC0CB" opacity="0.8" transform="rotate(180)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFE4E1" opacity="0.8" transform="rotate(225)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFB6C1" opacity="0.8" transform="rotate(270)"/>
-            <ellipse cx="0" cy="0" rx="18" ry="35" fill="#FFC0CB" opacity="0.8" transform="rotate(315)"/>
-            <circle cx="0" cy="0" r="12" fill="#FFD700"/>
-        </g>
-        <line x1="180" y1="250" x2="180" y2="350" stroke="#90EE90" stroke-width="4"/>
-        <path d="M 165 265 Q 172 260 180 265" fill="#90EE90" opacity="0.7"/>
-        <path d="M 180 285 Q 187 280 195 285" fill="#90EE90" opacity="0.7"/>
-        <path d="M 170 305 Q 175 300 180 305" fill="#90EE90" opacity="0.7"/>
-    </svg>
-    
-    <!-- Additional flowers with different designs -->
-    <svg class="flower-decoration" style="bottom: 0; left: 15%; width: 180px; height: 380px; animation-delay: 0.2s;" viewBox="0 0 180 380">
-        <!-- Tulip style flower -->
-        <ellipse cx="90" cy="280" rx="25" ry="35" fill="#FF69B4" opacity="0.9"/>
-        <ellipse cx="70" cy="285" rx="20" ry="30" fill="#FF1493" opacity="0.8"/>
-        <ellipse cx="110" cy="285" rx="20" ry="30" fill="#FF1493" opacity="0.8"/>
-        <line x1="90" y1="315" x2="90" y2="380" stroke="#4a7c2c" stroke-width="4"/>
-        <path d="M 75 330 Q 82 325 90 330" fill="#4a7c2c" opacity="0.7"/>
-        <path d="M 90 350 Q 97 345 105 350" fill="#4a7c2c" opacity="0.7"/>
-    </svg>
-    
-    <svg class="flower-decoration" style="bottom: 0; right: 15%; width: 180px; height: 380px; animation-delay: 0.6s;" viewBox="0 0 180 380">
-        <!-- Rose style flower -->
-        <circle cx="90" cy="280" r="30" fill="#DC143C" opacity="0.8"/>
-        <circle cx="90" cy="280" r="22" fill="#FF1493" opacity="0.8"/>
-        <circle cx="90" cy="280" r="14" fill="#FFB6C1" opacity="0.9"/>
-        <circle cx="90" cy="280" r="8" fill="#FFC0CB" opacity="0.9"/>
-        <line x1="90" y1="310" x2="90" y2="380" stroke="#2d5016" stroke-width="4"/>
-        <path d="M 75 325 Q 82 320 90 325" fill="#2d5016" opacity="0.7"/>
-        <path d="M 90 340 Q 97 335 105 340" fill="#2d5016" opacity="0.7"/>
-        <path d="M 75 355 Q 82 350 90 355" fill="#2d5016" opacity="0.7"/>
-    </svg>
-    
-    <svg class="flower-decoration" style="bottom: 0; left: 30%; width: 160px; height: 360px; animation-delay: 0.4s;" viewBox="0 0 160 360">
-        <!-- Sunflower style -->
-        <g transform="translate(80, 260)">
-            <circle cx="0" cy="0" r="35" fill="#FFD700" opacity="0.9"/>
-            <ellipse cx="0" cy="-30" rx="12" ry="20" fill="#FFA500" opacity="0.8"/>
-            <ellipse cx="21" cy="-21" rx="12" ry="20" fill="#FFA500" opacity="0.8" transform="rotate(45 80 260)"/>
-            <ellipse cx="30" cy="0" rx="12" ry="20" fill="#FFA500" opacity="0.8" transform="rotate(90 80 260)"/>
-            <ellipse cx="21" cy="21" rx="12" ry="20" fill="#FFA500" opacity="0.8" transform="rotate(135 80 260)"/>
-            <ellipse cx="0" cy="30" rx="12" ry="20" fill="#FFA500" opacity="0.8" transform="rotate(180 80 260)"/>
-            <ellipse cx="-21" cy="21" rx="12" ry="20" fill="#FFA500" opacity="0.8" transform="rotate(225 80 260)"/>
-            <ellipse cx="-30" cy="0" rx="12" ry="20" fill="#FFA500" opacity="0.8" transform="rotate(270 80 260)"/>
-            <ellipse cx="-21" cy="-21" rx="12" ry="20" fill="#FFA500" opacity="0.8" transform="rotate(315 80 260)"/>
-            <circle cx="0" cy="0" r="18" fill="#8B4513" opacity="0.8"/>
-        </g>
-        <line x1="80" y1="295" x2="80" y2="360" stroke="#4a7c2c" stroke-width="5"/>
-        <path d="M 65 310 Q 72 305 80 310" fill="#4a7c2c" opacity="0.7"/>
-    </svg>
-    
-    <svg class="flower-decoration" style="bottom: 0; right: 30%; width: 160px; height: 360px; animation-delay: 0.7s;" viewBox="0 0 160 360">
-        <!-- Lavender style -->
-        <ellipse cx="80" cy="240" rx="8" ry="12" fill="#9370DB" opacity="0.9"/>
-        <ellipse cx="75" cy="250" rx="10" ry="14" fill="#8A2BE2" opacity="0.9"/>
-        <ellipse cx="85" cy="250" rx="10" ry="14" fill="#8A2BE2" opacity="0.9"/>
-        <ellipse cx="72" cy="262" rx="11" ry="15" fill="#9370DB" opacity="0.9"/>
-        <ellipse cx="88" cy="262" rx="11" ry="15" fill="#9370DB" opacity="0.9"/>
-        <ellipse cx="70" cy="275" rx="12" ry="16" fill="#8A2BE2" opacity="0.9"/>
-        <ellipse cx="90" cy="275" rx="12" ry="16" fill="#8A2BE2" opacity="0.9"/>
-        <line x1="80" y1="290" x2="80" y2="360" stroke="#6b9d3a" stroke-width="3"/>
-        <path d="M 70 305 Q 75 300 80 305" fill="#6b9d3a" opacity="0.7"/>
-    </svg>
-    
-    <svg class="flower-decoration flower-left-top" viewBox="0 0 150 200">
-        <g transform="translate(40, 150)">
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFC0CB" opacity="0.8"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFE4E1" opacity="0.8" transform="rotate(60)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFB6C1" opacity="0.8" transform="rotate(120)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFC0CB" opacity="0.8" transform="rotate(180)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFE4E1" opacity="0.8" transform="rotate(240)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFB6C1" opacity="0.8" transform="rotate(300)"/>
-            <circle cx="0" cy="0" r="8" fill="#FFD700"/>
-        </g>
-        <line x1="40" y1="150" x2="40" y2="200" stroke="#90EE90" stroke-width="2.5"/>
-        <path d="M 25 165 Q 32 162 40 165" fill="#90EE90" opacity="0.7"/>
-    </svg>
-    
-    <svg class="flower-decoration flower-right-top" viewBox="0 0 150 200">
-        <g transform="translate(110, 150)">
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFB6C1" opacity="0.8"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFC0CB" opacity="0.8" transform="rotate(60)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFE4E1" opacity="0.8" transform="rotate(120)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFB6C1" opacity="0.8" transform="rotate(180)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFC0CB" opacity="0.8" transform="rotate(240)"/>
-            <ellipse cx="0" cy="0" rx="12" ry="25" fill="#FFE4E1" opacity="0.8" transform="rotate(300)"/>
-            <circle cx="0" cy="0" r="8" fill="#FFD700"/>
-        </g>
-        <line x1="110" y1="150" x2="110" y2="200" stroke="#90EE90" stroke-width="2.5"/>
-        <path d="M 110 165 Q 115 162 120 165" fill="#90EE90" opacity="0.7"/>
-    </svg>
-    
-    <!-- Grass at the bottom -->
-    <div class="grass" id="grass"></div>
-    
     <div class="container">
-        <!-- Page 1: Introduction -->
-        <div class="page active" id="page1">
-            <h1>Hello, Shane Eurika Therese! 💕</h1>
-            <div class="gif-container">
-                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXcybXp0dHJ6NmRhY2RzOWlucGg4ZHFmaGRzeDFpOG02bXM0NzRpdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Ed1FaePDtIjlz2tunv/giphy.gif" alt="Waving Hello">
-            </div>
-            <p>I have something really special to tell you...</p>
-            <p>Are you ready?</p>
-            <button onclick="nextPage(2)">Continue →</button>
+        <div class="header">
+            <h1>💖 Love Letters 💖</h1>
+            <p>A collection of my heart's whispers</p>
         </div>
 
-        <!-- Page 2: Build Up -->
-        <div class="page" id="page2">
-            <h2>I wanted to tell you something</h2>
-            <div class="gif-container">
-                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnpxYnNzMnZ4ODk3MTBvbnBnZ3B5Zmp4Nno5NmU3MTYwbzV6Nnl2YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/XYEEvoX0Ub69ZgN9ai/giphy.gif" alt="Hearts">
-            </div>
-            <p>I hope you don't laugh or get annoyed. I've been thinking about this a lot, and I just have to get it out.</p>
-            <p>I like you. </p>
-            <button onclick="nextPage(3)">Continue →</button>
-        </div>
+        <div id="letters-display"></div>
 
-        <!-- Page 3: More Feelings -->
-        <div class="page" id="page3">
-            <h2>You're literally the most amazing person</h2>
-            <div class="gif-container">
-                <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZjNqNWxmb2drMDF4dDBlaGcyM3A1c2wxdjE5MW15a3MxYml4djdobiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/4asRlBKdJaPeBahjcL/giphy.gif" alt="Blushing">
-            </div>
-            <p>You're stunning, not just because of how you look, but because of how you carry yourself - confident, smart, and unapologetic.</p>
-            <p>Your humor is everything. I love how you can be super funny one minute and then dark af the next. It's like, I never know what's gonna come out of your mouth, and I love that about you.</p>
-            <button onclick="nextPage(35)">Keep reading →</button>
-        </div>
+        <button class="add-letter-btn" onclick="openModal()">✍️ Write a New Letter</button>
+    </div>
 
-        <!-- Page 3.5: Even More Feelings -->
-        <div class="page" id="page35">
-            <h2>And honestly</h2>
-            <div class="gif-container">
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGdwNjl6ZjhucXE4aGdicjR3MzdheTVqZnZhZ3J6aW95YWlwNHFoNSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kwKjfaEpJbcQtzaFan/giphy.gif" alt="Thinking">
-            </div>
-            <p>The way you get mad at me when I annoy you? Kinda makes me wanna annoy you more. But it's also kinda scary because I don't want to lose you as a friend. You've become way too important to me.</p>
-            <p>I think what draws me to you is how real you are. You're not fake, you're not trying to be anyone else, and that's so attractive. You're just you. And I love that about you.</p>
-            <button onclick="nextPage(4)">Continue →</button>
-        </div>
-
-        <!-- Page 4: The Question -->
-        <div class="page" id="page4">
-            <h2>So, yun lang.</h2>
-            <div class="emoji">🥺👉👈</div>
-            
-            <!-- Photo Section - Replace the src with your image URL -->
-            <div class="photo-container">
-                <img src="IMG_20251231_205708.jpg" alt="Our Memory">
-                <p class="photo-caption">Tulips 4 you, shanee!</p>
-            </div>
-            
-            <p style="font-size: 1.3em; color: #666; margin-bottom: 20px;">Gusto ko lang na malaman mo. No pressure, no expectations.</p>
-            <p style="font-size: 1.5em; color: #FF1493; font-weight: bold;">Do i have the chance to get to know you more?</p>
-            <div class="gif-container">
-                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcWN6ZjBic3lmNTVwZmZ5NDc0NDV2Zjloamc2dmJmaGM5cTViMzE3byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TKSLd3q4TFh9jKzdQX/giphy.gif" alt="Nervous">
-            </div>
-            <p style="font-size: 0.9em; color: #999; font-style: italic;">hindi na ako makakapagreply kasi inoff ko na cp ko dahil sa kahihiyan </p>
-            <p style="font-size: 1.1em; color: #FF69B4; margin-top: 20px;">Happy New Year, Shanee! </p>
-            <div class="button-group">
-                <button class="yes-btn" onclick="yesClicked()">Yes! 💕</button>
-                <button class="no-btn" id="noBtn" onmouseover="moveButton()" onclick="noClicked()">No</button>
-            </div>
-        </div>
-
-        <!-- Page 5: Yes Response -->
-        <div class="page" id="page5">
-            <h1>YAAAY! 🎉</h1>
-            <div class="gif-container">
-                <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHQ5dGRodGwzNW8ybmU5dHk0YzZna3BqdXVieXh4aWpwd3JpMnhzeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/vqvmGLZdqxNzCtVlR3/giphy.gif" alt="Celebration">
-            </div>
-            <div class="final-message">
-                <p style="font-size: 1.3em; color: #FF1493;">Thank You, Shanee. You just made me the happiest person ever! </p>
-                <p>I can't wait to spend time with you! This is going to be amazing!</p>
-            </div>
-            <div class="emoji">💕💝</div>
-        </div>
-
-        <!-- Page 6: No Response -->
-        <div class="page" id="page6">
-            <h2>Wait, really?</h2>
-            <h2>🙁🙁</h2>
-            <div class="gif-container">
-                <img src="https://media.giphy.com/media/d2lcHJTG5Tscg/giphy.gif" alt="Sad">
-            </div>
-            <p>Sure ka ba? baka nagkamali ka ng pagpindot?</p>
-            <button onclick="nextPage(4)">← Let me reconsider</button>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2 style="color: #d63384; margin-bottom: 20px;">Write Your Heart Out</h2>
+            <form id="letter-form">
+                <div class="form-group">
+                    <label>Date:</label>
+                    <input type="text" id="letter-date" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Love Letter:</label>
+                    <textarea id="letter-text" placeholder="Dear love..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">💌 Save Letter</button>
+            </form>
         </div>
     </div>
 
     <script>
-        let currentPage = 1;
-
-        function nextPage(pageNum) {
-            document.getElementById('page' + currentPage).classList.remove('active');
-            currentPage = pageNum;
-            document.getElementById('page' + pageNum).classList.add('active');
-            createHearts();
-        }
-
-        function yesClicked() {
-            nextPage(5);
-            createManyHearts();
-        }
-
-        function noClicked() {
-            nextPage(6);
-        }
-
-        function moveButton() {
-            const btn = document.getElementById('noBtn');
-            const container = btn.parentElement;
-            const containerRect = container.getBoundingClientRect();
-            
-            const maxX = 100;
-            const maxY = 50;
-            
-            const randomX = Math.random() * maxX - maxX/2;
-            const randomY = Math.random() * maxY - maxY/2;
-            
-            btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
-            btn.style.transition = 'transform 0.3s ease';
-        }
-
-        function createHearts() {
-            const heartsContainer = document.getElementById('hearts');
-            for (let i = 0; i < 3; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.innerHTML = '💖';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDelay = Math.random() * 2 + 's';
-                    heartsContainer.appendChild(heart);
-                    
-                    setTimeout(() => heart.remove(), 4000);
-                }, i * 200);
-            }   
-        }
-
-        function createManyHearts() {
-            const heartsContainer = document.getElementById('hearts');
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.innerHTML = ['💖', '💕', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDelay = '0s';
-                    heartsContainer.appendChild(heart);
-                    
-                    setTimeout(() => heart.remove(), 4000);
-                }, i * 100);
+        // Create animated tulips
+        function createTulips() {
+            const tulipEmojis = ['🌷', '🌹', '💐'];
+            for (let i = 0; i < 15; i++) {
+                const tulip = document.createElement('div');
+                tulip.className = 'tulip';
+                tulip.textContent = tulipEmojis[Math.floor(Math.random() * tulipEmojis.length)];
+                tulip.style.left = Math.random() * 100 + '%';
+                tulip.style.top = Math.random() * 100 + '%';
+                tulip.style.animationDelay = Math.random() * 5 + 's';
+                tulip.style.animationDuration = (10 + Math.random() * 10) + 's';
+                document.body.appendChild(tulip);
             }
         }
 
-        function createFlowers() {
-            const flowersContainer = document.getElementById('flowers');
-            const flowerEmojis = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '💐'];
-            
-            // Left side flowers
-            for (let i = 0; i < 2; i++) {
-                setTimeout(() => {
-                    const flower = document.createElement('div');
-                    flower.className = 'flower flower-left';
-                    flower.innerHTML = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-                    flower.style.animationDelay = Math.random() * 3 + 's';
-                    flowersContainer.appendChild(flower);
-                    
-                    setTimeout(() => flower.remove(), 5000);
-                }, i * 1500);
+        // In-memory storage for letters
+        let letters = [
+            {
+                date: "January 11, 2026",
+                content: "My dearest love,\n\nEvery moment with you feels like a beautiful dream I never want to wake up from. Your smile lights up my world, and your laughter is the sweetest melody I've ever heard.\n\nI am so grateful for every second we share together. You make me a better person, and I fall more in love with you each day.\n\nForever yours,\nWith all my heart 💕"
             }
+        ];
+
+        function displayLetters() {
+            const display = document.getElementById('letters-display');
+            display.innerHTML = '';
             
-            // Right side flowers
-            for (let i = 0; i < 2; i++) {
-                setTimeout(() => {
-                    const flower = document.createElement('div');
-                    flower.className = 'flower flower-right';
-                    flower.innerHTML = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
-                    flower.style.animationDelay = Math.random() * 3 + 's';
-                    flowersContainer.appendChild(flower);
-                    
-                    setTimeout(() => flower.remove(), 5000);
-                }, i * 1500);
+            letters.forEach((letter, index) => {
+                const letterDiv = document.createElement('div');
+                letterDiv.className = 'letter-container';
+                letterDiv.innerHTML = `
+                    <div class="letter-date">${letter.date}</div>
+                    <div class="letter-content">${letter.content}</div>
+                    <button class="delete-btn" onclick="deleteLetter(${index})">Delete Letter</button>
+                `;
+                display.appendChild(letterDiv);
+
+                if (index < letters.length - 1) {
+                    const divider = document.createElement('div');
+                    divider.className = 'heart-divider';
+                    divider.textContent = '💝';
+                    display.appendChild(divider);
+                }
+            });
+        }
+
+        function openModal() {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('letter-date').value = new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('letter-form').reset();
+        }
+
+        function deleteLetter(index) {
+            if (confirm('Are you sure you want to delete this letter?')) {
+                letters.splice(index, 1);
+                displayLetters();
             }
         }
 
-        // Initial hearts and flowers animation
-        setInterval(createHearts, 3000);
-        setInterval(createFlowers, 4000);
-
-        // Create grass blades
-        function createGrass() {
-            const grassContainer = document.getElementById('grass');
-            const screenWidth = window.innerWidth;
-            const numberOfBlades = Math.floor(screenWidth / 4); // One blade every 4px (more dense)
+        document.getElementById('letter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            for (let i = 0; i < numberOfBlades; i++) {
-                const blade = document.createElement('div');
-                blade.className = 'grass-blade';
-                
-                // Random properties for natural look
-                const height = 50 + Math.random() * 70; // 50-120px height (taller)
-                const swayAngle = (Math.random() * 8 - 4); // -4 to 4 degrees (more sway)
-                const animationDelay = Math.random() * 2; // 0-2s delay
-                const animationDuration = 2 + Math.random() * 1.5; // 2-3.5s duration
-                
-                blade.style.left = `${i * 4}px`;
-                blade.style.height = `${height}px`;
-                blade.style.setProperty('--sway-angle', `${swayAngle}deg`);
-                blade.style.animationDelay = `${animationDelay}s`;
-                blade.style.animationDuration = `${animationDuration}s`;
-                
-                grassContainer.appendChild(blade);
+            const date = document.getElementById('letter-date').value;
+            const content = document.getElementById('letter-text').value;
+            
+            letters.push({ date, content });
+            displayLetters();
+            closeModal();
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                closeModal();
             }
         }
-        
-        // Create grass on load
-        createGrass();
+
+        // Initialize
+        createTulips();
+        displayLetters();
     </script>
 </body>
 </html>
