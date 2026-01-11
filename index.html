@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Letters for Shane</title>
+    <title>Love Letters for You</title>
     <style>
         * {
             margin: 0;
@@ -135,97 +135,6 @@
             font-size: 2em;
         }
 
-        .add-letter-btn {
-            background: linear-gradient(135deg, #ff69b4, #d63384);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            border-radius: 50px;
-            cursor: pointer;
-            display: block;
-            margin: 40px auto;
-            box-shadow: 0 5px 20px rgba(214, 51, 132, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .add-letter-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(214, 51, 132, 0.4);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .modal-content {
-            background: white;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 40px;
-            border-radius: 20px;
-            position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 30px;
-            color: #d63384;
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #d63384;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ffc3d5;
-            border-radius: 10px;
-            font-family: 'Georgia', serif;
-            font-size: 1em;
-        }
-
-        .form-group textarea {
-            min-height: 200px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, #ff69b4, #d63384);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            font-size: 1.1em;
-            border-radius: 50px;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 10px;
-        }
-
         .delete-btn {
             background: #ff4757;
             color: white;
@@ -236,10 +145,15 @@
             font-size: 0.9em;
             margin-top: 20px;
             transition: all 0.3s ease;
+            display: none; /* Hidden - buttons removed */
         }
 
         .delete-btn:hover {
             background: #ee5a6f;
+        }
+
+        .add-letter-btn {
+            display: none; /* Hidden - button removed */
         }
 
         @media (max-width: 768px) {
@@ -255,31 +169,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1> Love Letters for Shane, My Love </h1>
+            <h1>💖 Love Letters 💖</h1>
             <p>A collection of my heart's whispers</p>
         </div>
 
         <div id="letters-display"></div>
-
-        <button class="add-letter-btn" onclick="openModal()">✍️ Write a New Letter</button>
-    </div>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h2 style="color: #d63384; margin-bottom: 20px;">Write Your Heart Out</h2>
-            <form id="letter-form">
-                <div class="form-group">
-                    <label>Date:</label>
-                    <input type="text" id="letter-date" required>
-                </div>
-                <div class="form-group">
-                    <label>Your Love Letter:</label>
-                    <textarea id="letter-text" placeholder="Dear love..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">💌 Save Letter</button>
-            </form>
-        </div>
     </div>
 
     <script>
@@ -301,31 +195,30 @@
         // Storage for letters
         let letters = [];
 
-        // Load letters from localStorage
-        function loadLetters() {
-            const saved = localStorage.getItem('love-letters');
-            if (saved) {
-                letters = JSON.parse(saved);
-            } else {
-                // Default sample letter if no letters exist
-                letters = [
-                    {
-                        date: "January 9, 2026",
-                        content: "Her walls were a lot taller than I am. I didn't climb them. I didn't knock them down. I didn't bang on them or yell out from the other side. From there I spoke gently to her about the obvious; her walls.\n\nWe talked, we traded knowledge, things that only the two of us knows, and conversation of mutual interests. We spoke about who hurt us, how, when, and why. We shared a lot about who we were and who we desperately wanted to one day be.\n\nI did confess about what I feel about her, she did not reject me. She had given me a chance to know her more. And there's only one thing I knew.\n\nShe was safe. She's mine and I am hers."
-        }, 
-                 {
-                    date: "January 10, 2026",
-                    content: "how could i stop loving you if the best part of me i discovered only by talking with you."
-                }
-                ];
-                saveLetters();
-            }
-            displayLetters();
-        }
+        // ========================================
+        // ADD YOUR NEW LOVE LETTERS HERE
+        // ========================================
+        // Copy the format below to add new letters:
+        // {
+        //     date: "Month Day, Year",
+        //     content: "Your love letter text here.\n\nUse \\n\\n for new paragraphs."
+        // },
+        // ========================================
 
-        // Save letters to localStorage
-        function saveLetters() {
-            localStorage.setItem('love-letters', JSON.stringify(letters));
+        function loadLetters() {
+            letters = [
+                {
+                    date: "January 10, 2026",
+                    content: "Her walls were a lot taller than I am. I didn't climb them. I didn't knock them down. I didn't bang on them or yell out from the other side. From there I spoke gently to her about the obvious; her walls.\n\nWe talked, we traded knowledge, things that only the two of us knows, and conversation of mutual interests. We spoke about who hurt us, how, when, and why. We shared a lot about who we were and who we desperately wanted to one day be.\n\nI did confess about what I feel about her, she did not reject me. She had given me a chance to know her more. And there's only one thing I knew.\n\nShe was safe. She's mine and I am hers."
+                }
+                // ADD MORE LETTERS HERE - follow the same format as above
+                // Example:
+                // {
+                //     date: "January 15, 2026",
+                //     content: "My dearest,\n\nAnother beautiful letter..."
+                // }
+            ];
+            displayLetters();
         }
 
         function displayLetters() {
@@ -338,7 +231,6 @@
                 letterDiv.innerHTML = `
                     <div class="letter-date">${letter.date}</div>
                     <div class="letter-content">${letter.content}</div>
-                    <button class="delete-btn" onclick="deleteLetter(${index})">Delete Letter</button>
                 `;
                 display.appendChild(letterDiv);
 
