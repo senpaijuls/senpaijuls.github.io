@@ -135,27 +135,6 @@
             font-size: 2em;
         }
 
-        .delete-btn {
-            background: #ff4757;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            display: none; /* Hidden - buttons removed */
-        }
-
-        .delete-btn:hover {
-            background: #ee5a6f;
-        }
-
-        .add-letter-btn {
-            display: none; /* Hidden - button removed */
-        }
-
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5em;
@@ -192,9 +171,6 @@
             }
         }
 
-        // Storage for letters
-        let letters = [];
-
         // ========================================
         // ADD YOUR NEW LOVE LETTERS HERE
         // ========================================
@@ -205,25 +181,28 @@
         // },
         // ========================================
 
-        function loadLetters() {
-            letters = [
-                {
-                    date: "January 10, 2026",
-                    content: "Her walls were a lot taller than I am. I didn't climb them. I didn't knock them down. I didn't bang on them or yell out from the other side. From there I spoke gently to her about the obvious; her walls.\n\nWe talked, we traded knowledge, things that only the two of us knows, and conversation of mutual interests. We spoke about who hurt us, how, when, and why. We shared a lot about who we were and who we desperately wanted to one day be.\n\nI did confess about what I feel about her, she did not reject me. She had given me a chance to know her more. And there's only one thing I knew.\n\nShe was safe. She's mine and I am hers."
-                }
-                // ADD MORE LETTERS HERE - follow the same format as above
-                // Example:
-                // {
-                //     date: "January 15, 2026",
-                //     content: "My dearest,\n\nAnother beautiful letter..."
-                // }
-            ];
-            displayLetters();
-        }
+        const letters = [
+            {
+                date: "January 11, 2026",
+                content: "Her walls were a lot taller than I am. I didn't climb them. I didn't knock them down. I didn't bang on them or yell out from the other side. From there I spoke gently to her about the obvious; her walls.\n\nWe talked, we traded knowledge, things that only the two of us knows, and conversation of mutual interests. We spoke about who hurt us, how, when, and why. We shared a lot about who we were and who we desperately wanted to one day be.\n\nI did confess about what I feel about her, she did not reject me. She had given me a chance to know her more. And there's only one thing I knew.\n\nShe was safe. She's mine and I am hers."
+            }
+            // ADD MORE LETTERS HERE - follow the same format as above
+            // Example:
+            // ,
+            // {
+            //     date: "January 15, 2026",
+            //     content: "My dearest,\n\nAnother beautiful letter..."
+            // }
+        ];
 
         function displayLetters() {
             const display = document.getElementById('letters-display');
             display.innerHTML = '';
+            
+            if (letters.length === 0) {
+                display.innerHTML = '<p style="text-align: center; color: #d63384;">No letters yet...</p>';
+                return;
+            }
             
             letters.forEach((letter, index) => {
                 const letterDiv = document.createElement('div');
@@ -243,51 +222,11 @@
             });
         }
 
-        function openModal() {
-            document.getElementById('modal').style.display = 'block';
-            document.getElementById('letter-date').value = new Date().toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-        }
-
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-            document.getElementById('letter-form').reset();
-        }
-
-        function deleteLetter(index) {
-            if (confirm('Are you sure you want to delete this letter?')) {
-                letters.splice(index, 1);
-                saveLetters();
-                displayLetters();
-            }
-        }
-
-        document.getElementById('letter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const date = document.getElementById('letter-date').value;
-            const content = document.getElementById('letter-text').value;
-            
-            letters.push({ date, content });
-            saveLetters();
+        // Initialize everything when page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            createTulips();
             displayLetters();
-            closeModal();
         });
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('modal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Initialize
-        createTulips();
-        loadLetters();
     </script>
 </body>
 </html>
